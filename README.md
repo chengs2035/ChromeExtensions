@@ -12,3 +12,5 @@ This is Swagger ui tools,It will add two buttons on swaggerui,One is "copy rep",
 
 see this picture.
 
+![](https://raw.githubusercontent.com/chengs2035/ChromeExtensions/master/_Image/2020-10-23_10-30.png)
+
