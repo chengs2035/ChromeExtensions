@@ -1,0 +1,44 @@
+{
+    "manifest_version":2,
+    "name":"Swagger ui Tools",
+    "version": "1.0.0",
+    "description": "Simple to dev...For TaoZi",
+    "icons":
+	{
+		"16": "img/icon.png",
+		"48": "img/icon.png",
+		"128": "img/icon.png"
+    },
+	"background":
+	{
+        "page": "background.html",
+        "persistent": true
+    },
+    "content_scripts": 
+	[
+        {
+            "run_at": "document_end",
+			"matches": ["http://*/swagger-ui.html*", "https://*/swagger-ui.html*","https://*/swagger-ui/*","http://*/swagger-ui/*"],
+			"js": ["js/swagger-ui-script.js"]
+		}
+    ],
+	
+	"permissions":
+	[
+		"contextMenus",
+		"tabs", 
+		"notifications",
+		"webRequest", 
+		"webRequestBlocking",
+		"storage",
+		"http://*/*", 
+		"https://*/*" 
+	],
+    "web_accessible_resources": ["js/swagger-ui-script-inject.js"],
+    "homepage_url": "https://www.djc8.cn",
+    "options_ui":
+	{
+		"page": "options.html",
+		"chrome_style": true
+    }
+}
