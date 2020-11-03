@@ -14,8 +14,9 @@ t = setInterval(showAuto, 3000);
 });
 // 执行注入操作
 function startInject(){
+
     //旧版本的可以直接注入
-    //2.7.2
+    //=====================================2.7.2=====================================
     //Copy Rep
     jQuery("#swagger-ui-container div.response-class p span div div ul").each(function(){
         if(jQuery(this).hasClass("copyRep")){
@@ -30,7 +31,8 @@ function startInject(){
         jQuery(this).append(temp_li);
         
     });
-    //CP
+
+    //CPURL
     jQuery("ul.endpoints li.endpoint ul.operations li.operation div.heading h3 span.http_method").each(function(){
         if(jQuery(this).hasClass("CPUrl")){
             return;
@@ -42,7 +44,9 @@ function startInject(){
         jQuery(this).append(temp_a);
         jQuery(this).addClass("CPUrl");
     });
-    //2.9.2
+
+    
+    //=====================================2.9.2=====================================
     //Copy Rep
     jQuery("div.opblock-tag-section div.opblock-body div.responses-wrapper div.responses-inner table.responses-table tr.response td.col div ul.tab").each(function(){
         if(jQuery(this).hasClass("copyRep")){
@@ -60,6 +64,7 @@ function startInject(){
         jQuery(this).append(temp_li);
         jQuery(this).addClass("copyRep");
     });
+    //Copy URL
     ////*[@id="operations-user-controller-getTaoZiUsingPOST"]/div/span[2]/a/span
     jQuery("div.opblock-tag-section span div.opblock div.opblock-summary span.opblock-summary-method").each(function(){
         if(jQuery(this).hasClass("CPUrl")){
@@ -75,7 +80,7 @@ function startInject(){
         jQuery(this).addClass("CPUrl");
     });
 
-    //3.0.0
+    //=====================================3.0.0=====================================
     //Copy Rep
     jQuery("div.opblock-tag-section div.no-margin span div.no-margin div.responses-wrapper div.responses-inner div.model-example ul.tab").each(function(){
         if(jQuery(this).hasClass("copyRep")){
@@ -92,6 +97,7 @@ function startInject(){
         jQuery(this).append(temp_li);
         jQuery(this).addClass("copyRep");
     });
+    //Copy Url
     ////*[@id="operations-user-controller-getTaoZiUsingPOST"]/div/span[2]/a/span
     jQuery("div.opblock-tag-section div.no-margin span div.opblock div.opblock-summary span.opblock-summary-method").each(function(){
         if(jQuery(this).hasClass("CPUrl")){
@@ -111,48 +117,29 @@ function startInject(){
  //拷贝URL到剪切板
  function copyUrlRespV3(b){
     var preStr=b.next().find("a").text();
-    var input = document.createElement('textarea');
-    document.body.appendChild(input);
-    input.value = preStr;
-    //input.focus();
-    input.select();
-    document.execCommand('Copy');
-    input.remove();
+    copyStr(preStr);
 }
  //拷贝RESP到剪切板
  function copyRespV3(b){
      var preStr=b.parent().parent().next().find("pre").text();
-     var input = document.createElement('textarea');
-     document.body.appendChild(input);
-     input.value = preStr;
-     //input.focus();
-     input.select();
-     document.execCommand('Copy');
-     input.remove();
-
+     copyStr(preStr);
  }
-
  //拷贝URL到剪切板
  function copyUrlResp(b){
     var preStr=b.parent().next().find("a").text();
+    copyStr(preStr);
+}
+ //拷贝RESP到剪切板
+function copyResp(b){
+     var preStr=b.parent().parent().next().find("pre").text();
+     copyStr(preStr);
+ }
+function copyStr(toClip){
     var input = document.createElement('textarea');
     document.body.appendChild(input);
-    input.value = preStr;
+    input.value = toClip;
     //input.focus();
     input.select();
     document.execCommand('Copy');
     input.remove();
-}
- //拷贝RESP到剪切板
- function copyResp(b){
-     var preStr=b.parent().parent().next().find("pre").text();
-     var input = document.createElement('textarea');
-     document.body.appendChild(input);
-     input.value = preStr;
-     //input.focus();
-     input.select();
-     document.execCommand('Copy');
-     input.remove();
-
- }
- 
+} 

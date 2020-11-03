@@ -34,7 +34,7 @@
 		"http://*/*", 
 		"https://*/*" 
 	],
-    "web_accessible_resources": ["js/swagger-ui-script-inject.js"],
+    "web_accessible_resources": ["js/injectXMLHTTPRequest.js","js/swagger-ui-script-inject.js"],
     "homepage_url": "https://www.djc8.cn",
     "options_ui":
 	{
