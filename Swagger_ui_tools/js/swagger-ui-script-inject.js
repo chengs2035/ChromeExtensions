@@ -31,7 +31,22 @@ function startInject(){
         jQuery(this).append(temp_li);
         
     });
-
+    //Copy RepBody
+    jQuery("#swagger-ui-container div.container ul#resources li.resource ul.operations div.content div.response h4:contains(Response Body)").each(function(){
+        if(jQuery(this).hasClass("copyRepBody")){
+            return;
+        }
+        jQuery(this).addClass("copyRepBody");
+        var temp_span=document.createElement('span');
+        temp_span.innerText="  ";
+        var temp_a = document.createElement('a');
+        temp_a.setAttribute("style","text-transform: uppercase;text-decoration: none;color: #fff;display: inline-block;width: 50px;font-size: .7em;text-align: center;padding: 7px 0 4px;border-radius: 2px;background-color:#000000;");
+        temp_a.innerText="Copy";
+        temp_a.setAttribute("onclick", "javascript:copyResp(jQuery(this))");
+        temp_span.append(temp_a);
+        jQuery(this).append(temp_span);
+        
+    });
     //CPURL
     jQuery("ul.endpoints li.endpoint ul.operations li.operation div.heading h3 span.http_method").each(function(){
         if(jQuery(this).hasClass("CPUrl")){
@@ -45,7 +60,7 @@ function startInject(){
         jQuery(this).addClass("CPUrl");
     });
 
-    
+
     //=====================================2.9.2=====================================
     //Copy Rep
     jQuery("div.opblock-tag-section div.opblock-body div.responses-wrapper div.responses-inner table.responses-table tr.response td.col div ul.tab").each(function(){
