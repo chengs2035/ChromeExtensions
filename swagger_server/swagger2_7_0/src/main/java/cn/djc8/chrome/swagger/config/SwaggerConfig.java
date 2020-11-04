@@ -24,7 +24,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("Swagger测试页面")
                 .description("用于测试环境测试SWAGGER")
-                .contact(new Contact("TaoZi","",""))
+                .contact(new Contact("TaoZi", "", ""))
                 .version("1.0")
                 .build();
     }

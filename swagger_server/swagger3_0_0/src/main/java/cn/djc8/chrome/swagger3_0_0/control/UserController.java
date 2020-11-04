@@ -1,7 +1,8 @@
-package cn.djc8.chrome.swagger.control;
+package cn.djc8.chrome.swagger3_0_0.control;
 
 
-import cn.djc8.chrome.swagger.vo.TaoZi;
+
+import cn.djc8.chrome.swagger3_0_0.vo.TaoZi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

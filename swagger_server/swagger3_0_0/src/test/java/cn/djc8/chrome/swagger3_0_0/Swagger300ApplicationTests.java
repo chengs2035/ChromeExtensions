@@ -1,13 +1,13 @@
-package cn.djc8.chrome.swagger2_9_2;
+package cn.djc8.chrome.swagger3_0_0;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Swagger292ApplicationTests {
+class Swagger300ApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }

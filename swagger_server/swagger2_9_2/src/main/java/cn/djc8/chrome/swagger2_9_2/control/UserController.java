@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    @RequestMapping(value="/hello" ,method = RequestMethod.GET)
-    public String hello(){
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String hello() {
         return "hello";
     }
 
-    @RequestMapping(value="/GetTaoZi",method = RequestMethod.POST)
-    public TaoZi getTaoZi(){
-        TaoZi taozi=new TaoZi();
+    @RequestMapping(value = "/GetTaoZi", method = RequestMethod.POST)
+    public TaoZi getTaoZi() {
+        TaoZi taozi = new TaoZi();
         taozi.setAge(18);
         taozi.setHeight(170);
         taozi.setName("桃子");
