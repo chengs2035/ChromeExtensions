@@ -14,3 +14,5 @@ see this picture.
 
 ![](https://raw.githubusercontent.com/chengs2035/ChromeExtensions/master/_Image/2020-10-23_10-30.png)
 
+![](https://raw.githubusercontent.com/chengs2035/ChromeExtensions/master/_Image/2020-11-04_02_16.png)
+
