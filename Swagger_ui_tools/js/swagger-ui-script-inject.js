@@ -15,52 +15,61 @@ t = setInterval(showAuto, 3000);
 // 执行注入操作
 function startInject(){
 
-    //旧版本的可以直接注入
-    //=====================================2.7.2=====================================
+    fin2_7_2();
+    fin2_9_2();
+    fin3_0_0();
+}
+
+function fin3_0_0(){
+     //=====================================3.0.0=====================================
     //Copy Rep
-    jQuery("#swagger-ui-container div.response-class p span div div ul").each(function(){
+    jQuery("div.opblock-tag-section div.no-margin span div.no-margin div.responses-wrapper div.responses-inner div.model-example ul.tab").each(function(){
         if(jQuery(this).hasClass("copyRep")){
             return;
          }
-         jQuery(this).addClass("copyRep");
-        var temp_li = document.createElement('li');
+       // console.log(this);
+       var temp_li = document.createElement('li');
+       jQuery(temp_li).addClass("tabitem");
         var temp_a = document.createElement('a');
+        jQuery(temp_a).addClass("tablinks");
         temp_a.innerText="Copy Rep";
-        temp_a.setAttribute("onclick", "javascript:copyResp(jQuery(this))");
+        temp_a.setAttribute("onclick", "javascript:copyRespV3(jQuery(this))");
         temp_li.appendChild(temp_a);
         jQuery(this).append(temp_li);
-        
+        jQuery(this).addClass("copyRep");
     });
-    //Copy RepBody
-    jQuery("#swagger-ui-container div.container ul#resources li.resource ul.operations div.content div.response h4:contains(Response Body)").each(function(){
+    //COPY REPBODY
+    //#swagger-ui-container div.container ul#resources li.resource ul.operations div.content div.response 
+    jQuery("div#swagger-ui div.swagger-ui div.wrapper div.opblock-body div.responses-wrapper div.responses-inner table tr.response td.response-col_description div div.highlight-code").each(function(){
         if(jQuery(this).hasClass("copyRepBody")){
             return;
         }
         jQuery(this).addClass("copyRepBody");
-        var temp_span=document.createElement('span');
-        temp_span.innerText="  ";
-        var temp_a = document.createElement('a');
-        temp_a.setAttribute("style","text-transform: uppercase;text-decoration: none;color: #fff;display: inline-block;width: 50px;font-size: .7em;text-align: center;padding: 7px 0 4px;border-radius: 2px;background-color:#000000;");
-        temp_a.innerText="Copy";
-        temp_a.setAttribute("onclick", "javascript:copyResp(jQuery(this))");
-        temp_span.append(temp_a);
-        jQuery(this).append(temp_span);
+        var temp_div=document.createElement("div");
+        temp_div.innerText="Copy";
+        jQuery(temp_div).addClass("download-contents");
+        temp_div.setAttribute("style","right: 100px;");
+        temp_div.setAttribute("onclick","javascript:copyRespBodyV3(jQuery(this))");
+        jQuery(this).append(temp_div);
         
     });
-    //CPURL
-    jQuery("ul.endpoints li.endpoint ul.operations li.operation div.heading h3 span.http_method").each(function(){
+
+    //Copy Url
+    jQuery("div.opblock-tag-section div.no-margin span div.opblock div.opblock-summary span.opblock-summary-method").each(function(){
         if(jQuery(this).hasClass("CPUrl")){
             return;
          }
-        var temp_a = document.createElement('a');
+        var temp_a = document.createElement('span');
         temp_a.innerText="CP";
-        temp_a.setAttribute("onclick", "javascript:copyUrlResp($(this))");
-        temp_a.setAttribute("style","background-color:#000000");
-        jQuery(this).append(temp_a);
+        jQuery(temp_a).addClass("opblock-summary-method").addClass("CPUrl");
+        temp_a.setAttribute("onclick", "javascript:copyUrlRespV3(jQuery(this))");
+        temp_a.setAttribute("style","background-color:#000000;margin-left:5px;");
+
+        jQuery(this).after(temp_a);
         jQuery(this).addClass("CPUrl");
     });
-
-
+}
+function fin2_9_2(){
     //=====================================2.9.2=====================================
     //Copy Rep
     jQuery("div.opblock-tag-section div.opblock-body div.responses-wrapper div.responses-inner table.responses-table tr.response td.col div ul.tab").each(function(){
@@ -110,63 +119,53 @@ function startInject(){
         jQuery(this).after(temp_a);
         jQuery(this).addClass("CPUrl");
     });
-
-    //=====================================3.0.0=====================================
+}
+function fin2_7_2(){
+ //旧版本的可以直接注入
+    //=====================================2.7.2=====================================
     //Copy Rep
-    jQuery("div.opblock-tag-section div.no-margin span div.no-margin div.responses-wrapper div.responses-inner div.model-example ul.tab").each(function(){
+    jQuery("#swagger-ui-container div.response-class p span div div ul").each(function(){
         if(jQuery(this).hasClass("copyRep")){
             return;
          }
-       // console.log(this);
-       var temp_li = document.createElement('li');
-       jQuery(temp_li).addClass("tabitem");
+         jQuery(this).addClass("copyRep");
+        var temp_li = document.createElement('li');
         var temp_a = document.createElement('a');
-        jQuery(temp_a).addClass("tablinks");
         temp_a.innerText="Copy Rep";
-        temp_a.setAttribute("onclick", "javascript:copyRespV3(jQuery(this))");
+        temp_a.setAttribute("onclick", "javascript:copyResp(jQuery(this))");
         temp_li.appendChild(temp_a);
         jQuery(this).append(temp_li);
-        jQuery(this).addClass("copyRep");
+        
     });
-    //COPY REPBODY
-    //#swagger-ui-container div.container ul#resources li.resource ul.operations div.content div.response 
-    jQuery("div#swagger-ui div.swagger-ui div.wrapper div.opblock-body div.responses-wrapper div.responses-inner table tr.response td.response-col_description div div.highlight-code").each(function(){
+    //Copy RepBody
+    jQuery("#swagger-ui-container div.container ul#resources li.resource ul.operations div.content div.response h4:contains(Response Body)").each(function(){
         if(jQuery(this).hasClass("copyRepBody")){
             return;
         }
         jQuery(this).addClass("copyRepBody");
-        var temp_div=document.createElement("div");
-        temp_div.innerText="Copy";
-        jQuery(temp_div).addClass("download-contents");
-        temp_div.setAttribute("style","right: 100px;");
-        temp_div.setAttribute("onclick","javascript:copyRespBodyV3(jQuery(this))");
-        jQuery(this).append(temp_div);
-
-        // var temp_span=document.createElement('span');
-        // temp_span.innerText="  ";
-        // var temp_a = document.createElement('a');
-        // temp_a.setAttribute("style","text-transform: uppercase;text-decoration: none;color: #fff;display: inline-block;width: 50px;font-size: .7em;text-align: center;padding: 7px 0 4px;border-radius: 2px;background-color:#000000;");
-        // temp_a.innerText="Copy";
-        // temp_a.setAttribute("onclick", "javascript:copyResp(jQuery(this))");
-        // temp_span.append(temp_a);
-        //jQuery(this).append(temp_span);
+        var temp_span=document.createElement('span');
+        temp_span.innerText="  ";
+        var temp_a = document.createElement('a');
+        temp_a.setAttribute("style","text-transform: uppercase;text-decoration: none;color: #fff;display: inline-block;width: 50px;font-size: .7em;text-align: center;padding: 7px 0 4px;border-radius: 2px;background-color:#000000;");
+        temp_a.innerText="Copy";
+        temp_a.setAttribute("onclick", "javascript:copyResp(jQuery(this))");
+        temp_span.append(temp_a);
+        jQuery(this).append(temp_span);
         
     });
-
-    //Copy Url
-    jQuery("div.opblock-tag-section div.no-margin span div.opblock div.opblock-summary span.opblock-summary-method").each(function(){
+    //CPURL
+    jQuery("ul.endpoints li.endpoint ul.operations li.operation div.heading h3 span.http_method").each(function(){
         if(jQuery(this).hasClass("CPUrl")){
             return;
          }
-        var temp_a = document.createElement('span');
+        var temp_a = document.createElement('a');
         temp_a.innerText="CP";
-        jQuery(temp_a).addClass("opblock-summary-method").addClass("CPUrl");
-        temp_a.setAttribute("onclick", "javascript:copyUrlRespV3(jQuery(this))");
-        temp_a.setAttribute("style","background-color:#000000;margin-left:5px;");
-
-        jQuery(this).after(temp_a);
+        temp_a.setAttribute("onclick", "javascript:copyUrlResp($(this))");
+        temp_a.setAttribute("style","background-color:#000000");
+        jQuery(this).append(temp_a);
         jQuery(this).addClass("CPUrl");
     });
+
 }
 
  //拷贝URL到剪切板
